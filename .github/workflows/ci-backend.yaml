@@ -1,0 +1,61 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: chat_backend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          pip install flake8
+
+      - name: Lint with flake8
+        run: |
+          source venv/bin/activate
+          flake8 app
+
+      - name: Start FastAPI backend
+        run: |
+          source venv/bin/activate
+          uvicorn app.main:app --port 8000 --reload &
+          echo $! > uvicorn.pid
+
+      - name: Wait for backend to be ready
+        run: |
+          for i in {1..10}; do
+            curl -s http://localhost:8000/docs && break
+            echo "Waiting for backend to start..."
+            sleep 2
+          done
+
+      - name: Test /chat endpoint
+        run: |
+          curl -X POST http://localhost:8000/chat \
+            -H "Content-Type: application/json" \
+            -d '{"message": "Hello, backend!"}' \
+            --fail
+
+      - name: Stop FastAPI backend
+        run: |
+          kill $(cat uvicorn.pid)

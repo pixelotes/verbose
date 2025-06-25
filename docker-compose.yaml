@@ -1,0 +1,43 @@
+services:
+  backend:
+    build:
+      context: ./chat_backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_BASE_URL=http://ollama:11434/v1
+      - OPENAI_API_KEY=empty
+      - DEFAULT_MODEL=llama3
+      - DEFAULT_SYSTEM_PROMPT=You are a helpful assistant.
+#    depends_on:
+#      - ollama
+    restart: unless-stopped
+    networks:
+      - verbose
+
+  frontend:
+    build:
+      context: ./chat_ui_flutter
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    links:
+      - backend
+    restart: unless-stopped
+    networks:
+      - verbose
+
+#  ollama:
+#    image: ollama/ollama
+#    ports:
+#      - "11434:11434"
+#    volumes:
+#      - ollama-data:/root/.ollama
+#    restart: unless-stopped
+
+#volumes:
+#  ollama-data:
+
+networks:
+  verbose:

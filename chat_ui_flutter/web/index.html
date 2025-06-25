@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chat UI</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="A simple chat UI powered by Flutter and FastAPI.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <script src="flutter.js" defer></script
+  <meta name="theme-color" content="#000000">
+
+  <!-- Flutter Web App JS -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function (ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: 'v1',
+        },
+        onEntrypointLoaded: async function (engineInitializer) {
+          let appRunner = await engineInitializer.initializeEngine();
+          appRunner.runApp();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

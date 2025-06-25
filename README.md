@@ -4,7 +4,7 @@
 
 ---
 
-## 🚧 Project Structure and Components
+## Project Structure and Components
 
 ```
 verbose/
@@ -34,9 +34,9 @@ verbose/
 
 ---
 
-## 🧩 Components Overview
+## Components Overview
 
-### 🔙 Backend - FastAPI
+### Backend - FastAPI
 
 - **Language**: Python 3.11+
 - **Purpose**: Accepts chat messages and returns dummy (or future LLM-based) responses.
@@ -52,7 +52,7 @@ verbose/
 - `/chat` POST endpoint accepts a message and returns a hardcoded response: `{ "reply": "This is a dummy response." }`
 - Ready to be extended with actual LLM integration (e.g., Ollama or OpenAI)
 
-### 🌐 Frontend - Flutter Web
+### Frontend - Flutter Web
 
 - **Language**: Dart 3+
 - **Purpose**: Provides a user-friendly web UI to send messages and display responses
@@ -68,7 +68,7 @@ verbose/
 
 ---
 
-## 🔗 Frontend–Backend Interaction
+## Frontend–Backend Interaction
 
 1. User types a message and presses "Send"
 2. Flutter frontend sends a POST request to `http://localhost:8000/chat` with JSON:
@@ -83,7 +83,7 @@ verbose/
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ### Backend (chat\_backend/requirements.txt)
 
@@ -105,7 +105,7 @@ dependencies:
 
 ---
 
-## 🚀 Getting Started (Development)
+## Getting Started (Development)
 
 ### 1. Backend
 
@@ -131,7 +131,7 @@ Access at: [http://localhost\:xxxx](http://localhost\:xxxx) (will be printed by 
 
 ---
 
-## 🐳 Running with Docker Compose
+## Running with Docker Compose
 
 1. Make sure Docker is installed
 2. From root folder:
@@ -145,7 +145,7 @@ docker-compose up --build
 
 ---
 
-## ✅ Next Goals (Stage 2+)
+## Next Goals (Stage 2+)
 
 - Connect to real LLMs (Ollama / OpenAI)
 - Stream responses (SSE)
@@ -154,5 +154,5 @@ docker-compose up --build
 
 ---
 
-Made with 🧠 and 🐍 by [You] — Welcome to **Verbose**!
+Made with 🧠 and 🐍 by Pixelotes — Welcome to **Verbose**!
 

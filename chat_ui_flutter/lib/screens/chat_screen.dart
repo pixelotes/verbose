@@ -55,7 +55,16 @@ class _ChatScreenState extends State<ChatScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Expanded(child: TextField(controller: _controller)),
+                //Expanded(child: TextField(controller: _controller)),
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    onSubmitted: (_) => _sendMessage(),
+                    decoration: const InputDecoration(
+                      hintText: 'Type a message...',
+                    ),
+                  ),
+                ),
                 IconButton(
                   icon: const Icon(Icons.send),
                   onPressed: _sendMessage,

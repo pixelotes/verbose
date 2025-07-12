@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
 import '../services/api_service.dart';
+import '../widgets/message_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -44,10 +45,11 @@ class _ChatScreenState extends State<ChatScreen> {
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 final msg = _messages[index];
-                return ListTile(
-                  title: Text(msg.content),
-                  subtitle: Text(msg.role),
-                );
+                //return ListTile(
+                //  title: Text(msg.content),
+                //  subtitle: Text(msg.role),
+                //);
+                return MessageBubble(message: msg);
               },
             ),
           ),

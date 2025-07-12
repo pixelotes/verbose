@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
+import 'package:intl/intl.dart';
 
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
@@ -25,11 +26,25 @@ class MessageBubble extends StatelessWidget {
             bottomRight: Radius.circular(isUser ? 0 : 16),
           ),
         ),
-        child: Text(
-          message.content,
-          style: TextStyle(
-            color: isUser ? Colors.white : Colors.black87,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              message.content,
+              style: TextStyle(
+                color: isUser ? Colors.white : Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              DateFormat.jm().format(message.timestamp), // e.g., 10:42 AM
+              style: TextStyle(
+                fontSize: 10,
+                color: isUser ? Colors.white70 : Colors.black45,
+              ),
+            ),
+          ],
         ),
       ),
     );

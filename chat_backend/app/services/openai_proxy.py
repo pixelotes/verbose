@@ -1,6 +1,7 @@
 import httpx
 from app import config
 
+
 async def get_response(user_message: str) -> str:
     payload = {
         "model": config.LLM_MODEL,
@@ -38,7 +39,8 @@ async def get_response(user_message: str) -> str:
         return f"[Error] Request failed: {str(e)}"
 
     except httpx.HTTPStatusError as e:
-        return f"[Error] LLM backend returned error: {e.response.status_code} - {e.response.text}"
+        error_details = f"{e.response.status_code} - {e.response.text}"
+        return f"[Error] LLM backend returned error: {error_details}"
 
     except Exception as e:
         return f"[Error] Unexpected backend error: {str(e)}"

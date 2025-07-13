@@ -1,17 +1,12 @@
+# app/routes/chat.py
 from fastapi import APIRouter
-from pydantic import BaseModel
+from app.models.chat_request import ChatRequest
+from app.services.openai_proxy import get_response
 
 router = APIRouter()
 
-
-class ChatRequest(BaseModel):
-    message: str
-
-
-class ChatResponse(BaseModel):
-    reply: str
-
-
-@router.post("/chat", response_model=ChatResponse)
-async def chat_endpoint(req: ChatRequest):
-    return ChatResponse(reply="This is a dummy response.")
+@router.post("/chat")
+async def chat_endpoint(payload: ChatRequest):
+    user_message = payload.message
+    reply = await get_response(user_message)
+    return {"reply": reply}

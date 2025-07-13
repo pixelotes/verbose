@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
 import '../services/api_service.dart';
 import '../widgets/message_bubble.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import '../config/api_config.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});

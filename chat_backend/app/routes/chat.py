@@ -4,6 +4,7 @@ from app.services.openai_proxy import get_response
 
 router = APIRouter()
 
+
 @router.post("/chat")
 async def chat_endpoint(payload: ChatRequest):
     user_message = payload.message
@@ -12,4 +13,3 @@ async def chat_endpoint(payload: ChatRequest):
         "reply": reply,
         "error": reply.startswith("[Error]")
     }
-

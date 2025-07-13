@@ -4,13 +4,24 @@
 
 ---
 
-## TBD:
-- Add an overview of the new project structure and components
-- Explain the changes made to the components and the current status
-- Update the dependencies
-- Update the instructions to run the project
-- Update the instructions for testing the components
-- Once everything else is done, update the dev plan and merge this branch into main.
+Current features:
+- Basic chat UI with Whatsapp-like styling
+- Messages now have roles (user and assistant)
+- New messages automatically trigger a scroll to bottom
+- Messages now show the time of creation
+- Enter key sends a message (in addition to the send icon)
+- The backend now uses a dotenv for the llm configuration values
+- The backend is now wired to Ollama
+- Errors are somewhat gracefully handled
+
+---
+
+Planned for next stage:
+- Further UI enhancements:
+  * Add multiline support
+  * Select the chat textbox after sending a message
+- Prepare the UI for streaming responses
+- Add markdown rendering
 
 ---
 
